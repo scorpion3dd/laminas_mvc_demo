@@ -92,7 +92,6 @@
         "sonar-scanner": "sonar-scanner",
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
-        "static-analysis": "vendor/bin/psalm",
         "phpmd": "vendor/bin/phpmd module/Application/src/ html phpmd_ruleset.xml --reportfile __tests__/phpmd.html --suffixes php,phtml --ansi",
         "stan-check": "phpstan analyse --level=7 --memory-limit=1024M --xdebug --ansi",
         "stan-check-coverage": "phpstan analyse --xdebug --level=7 --memory-limit=1024M --error-format=json > __tests__/phpstan.json",
