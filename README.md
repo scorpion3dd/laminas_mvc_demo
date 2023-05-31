@@ -131,7 +131,7 @@ SET GLOBAL log_bin_trust_function_creators = 1;
 
 6. Clone a project code from the repository
 ~~~~~~bash
-git clone https://scorpion3dd@bitbucket.org/3dscorpion7/laminas-mvc.git
+git clone https://github.com/scorpion3dd/laminas_mvc_demo.git
 ~~~~~~
 
 Execute the actions of the items 7.-13. - automatically by executing the 
