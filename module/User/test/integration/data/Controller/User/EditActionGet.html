@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Edit User - Simple Web Demo Free Lottery Management Application</title>        <meta name="viewport" content="width&#x3D;device-width,&#x20;initial-scale&#x3D;1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE&#x3D;edge">        <link href="&#x2F;css&#x2F;bootstrap.min.css" media="screen" rel="stylesheet" type="text&#x2F;css">
+    <link href="&#x2F;css&#x2F;bootstrap-theme.min.css" media="screen" rel="stylesheet" type="text&#x2F;css">
+    <link href="&#x2F;css&#x2F;style.css" media="screen" rel="stylesheet" type="text&#x2F;css">
+    <link href="&#x2F;img&#x2F;favicon.ico" rel="shortcut&#x20;icon" type="image&#x2F;vnd.microsoft.icon">        <scriptsrc="&#x2F;js&#x2F;jquery-2.2.4.min.js"></script>
+    <scriptsrc="&#x2F;js&#x2F;bootstrap.min.js"></script>    </head>
+<body>
+<div class="container">
+    <div class="row">
+        <!-- Page header -->
+        <div class="col-md-12">
+            <div class="app-caption">
+                Simple Web Demo Free Lottery Management Application                    </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Navigation bar -->
+            <nav class="navbar navbar-default" role="navigation"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="collapse navbar-collapse navbar-ex1-collapse"><ul class="nav navbar-nav"><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="/users">Manage Users</a></li><li><a href="/permissions">Manage Permissions</a></li><li><a href="/roles">Manage Roles</a></li><li><a href="/consumer">Consumer</a></li><li><a href="/logs">Logs</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right"><li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="/application/language/en_US">English (EN)</a></li><li><a href="/application/language/ru_RU">Russian (RU)</a></li><li><a href="/application/language/es_ES">Spanish (ES)</a></li></ul></li><li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown">admin@example.com <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="/application/settings">Settings</a></li><li><a href="/logout">Sign out</a></li></ul></li></ul></div></nav>                </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Breadcrumbs -->
+            <ol class="breadcrumb"><li><a href="/">Home</a></li><li><a href="/users">Manage Users</a></li><li class="active">Edit User</li></ol>                </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Page content placeholder -->
+            <h1>Edit User guest3@example.com</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <form method="post" name="user-form" id="user-form">        <div class="form-group">
+                        <label for="email">E-mail</label>            <input type="text" name="email" class="form-control" placeholder="name&#x40;example.com" value="guest3&#x40;example.com">
+                    </div>
+                        <div class="form-group">
+                            <label for="full_name">Full Name</label>            <input type="text" name="full_name" class="form-control" placeholder="John&#x20;Doe" value="Danny&#x20;Fay">
+                        </div>
+                        <div class="form-group">
+                            <label for="date_birthday">Date Birthday</label>            <input type="date" name="date_birthday" class="form-control" value="1985-10-12">                    </div>
+                        <div class="form-group">
+                            <label for="gender">Gender</label>            <select name="gender" class="form-control"><option value="">Please choose</option>
+                            <option value="1">Male</option>
+                            <option value="2" selected="selected">Female</option></select>                    </div>
+                        <div class="form-group">
+                            <label for="access">Access</label>            <select name="access" class="form-control"><option value="">Please choose</option>
+                            <option value="1">Yes</option>
+                            <option value="2" selected="selected">No</option></select>                    </div>
+                        <div class="form-group">
+                            <label for="status">Status</label>            <select name="status" class="form-control"><option value="">Please choose</option>
+                            <option value="1">Active</option>
+                            <option value="2" selected="selected">Disactive</option></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="roles">Role(s)</label>            <select name="roles&#x5B;&#x5D;" multiple="multiple" class="form-control"><option value="3">Administrator</option>
+                            <option value="4" selected="selected">Guest</option></select>
+                        </div>
+                        <input type="hidden" name="csrf" value="

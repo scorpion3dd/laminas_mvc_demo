@@ -1,0 +1,73 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Application\View\Helper\Breadcrumbs;
+use Application\View\Helper\Menu;
+use User\Form\RoleForm;
+use Laminas\View\Renderer\PhpRenderer;
+
+/** @var PhpRenderer $this */
+$this->headTitle($this->translate('Add Role'));
+/** @var Menu $menu */
+$menu = $this->mainMenu();
+$menu->setActiveItemId('roles');
+/** @var Breadcrumbs $breadcrumbs */
+$breadcrumbs = $this->pageBreadcrumbs();
+$breadcrumbs->setItems([
+    'Home' => $this->url('home'),
+    'Manage Roles' => $this->url('roles'),
+    'Add Role' => $this->url('roles', ['action' => 'add'])
+]);
+/** @var RoleForm $form */
+$form->get('name')->setAttributes([
+    'class' => 'form-control',
+    'placeholder' => 'Enter name'
+    ]);
+$form->get('description')->setAttributes([
+    'class' => 'form-control',
+    'placeholder' => 'Enter description'
+    ]);
+$form->get('inherit_roles')->setAttributes([
+    'class' => 'form-control',
+    ]);
+$form->get('submit')->setAttributes(['class' => 'btn btn-primary']);
+$form->prepare();
+?>
+<h1><?= $this->translate('Add Role'); ?></h1>
+<p>
+    <?= $this->translate('Please fill out the following form and click the Create button.'); ?>
+</p>
+<div class="row">
+    <div class="col-md-6">
+        <?= $this->form()->openTag($form); ?>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('name')); ?>
+            <?= $this->formElement($form->get('name')); ?>
+            <?= $this->formElementErrors($form->get('name')); ?>                  
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('description')); ?>
+            <?= $this->formElement($form->get('description')); ?>
+            <?= $this->formElementErrors($form->get('description')); ?>                  
+        </div>
+        <div class="form-group">
+            <?= $this->formLabel($form->get('inherit_roles')); ?>
+            <?= $this->formElement($form->get('inherit_roles')); ?>
+            <?= $this->formElementErrors($form->get('inherit_roles')); ?>
+        </div>
+        <?= $this->formElement($form->get('csrf')); ?>
+        <?= $this->formElement($form->get('submit')); ?>
+        <?= $this->form()->closeTag(); ?>
+    </div>    
+</div>

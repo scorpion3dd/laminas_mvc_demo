@@ -1,0 +1,96 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Application\View\Helper\Breadcrumbs;
+use Application\View\Helper\Menu;
+use User\Entity\User;
+use Laminas\Paginator\Paginator;
+use Laminas\View\Renderer\PhpRenderer;
+
+/** @var PhpRenderer $this */
+$this->headTitle($this->translate('Users'));
+/** @var Menu $menu */
+$menu = $this->mainMenu();
+$menu->setActiveItemId('users');
+/** @var Breadcrumbs $breadcrumbs */
+$breadcrumbs = $this->pageBreadcrumbs();
+$breadcrumbs->setItems([
+    $this->translate('Home') => $this->url('home'),
+    $this->translate('Manage Users') => $this->url('users'),
+]);
+?>
+<h1><?= $this->translate('Manage Users'); ?></h1>
+<p>
+<a class="btn btn-default" href="
+    <?= $this->url('users', ['action' => 'add']); ?>">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <?= $this->translate('New User'); ?>
+</a>
+<table class="table table-striped">
+   <tr>
+        <th>ID</th>
+        <th><?= $this->translate('E-mail'); ?></th>
+        <th><?= $this->translate('Full Name'); ?></th>
+        <th><?= $this->translate('Role(s)'); ?></th>
+        <th><?= $this->translate('Date Birthday'); ?></th>
+        <th><?= $this->translate('Date Created'); ?></th>
+        <th><?= $this->translate('Gender'); ?></th>
+        <th><?= $this->translate('Access'); ?></th>
+        <th><?= $this->translate('Status'); ?></th>
+        <th><?= $this->translate('Actions'); ?></th>
+    </tr>
+    <?php /** @var Paginator|null $users */ ?>
+    <?php if (! empty($users)) : ?>
+        <?php /** @var User $user */ ?>
+        <?php foreach ($users as $user) : ?>
+            <tr>
+                <td><?= $this->escapeHtml($user->getId()); ?></td>
+                <td>
+                    <a href="<?= $this->url('users', ['action' => 'view', 'id' => $user->getId()]); ?>">
+                        <?= $this->escapeHtml($user->getEmail()); ?>
+                    </a>
+                </td>
+                <td>
+                    <?= $this->escapeHtml($user->getFullName()); ?>
+                </td>
+                <td>
+                    <?= $this->escapeHtml($user->getRolesAsString()); ?>
+                </td>
+                <td><nobr><?= $this->escapeHtml($user->getDateBirthday()->format('Y-m-d')); ?></nobr></td>
+                <td><nobr><?= $this->escapeHtml($user->getDateCreated()->format('Y-m-d')); ?></nobr></td>
+                <td><?= $this->escapeHtml($this->translate($user->getGenderAsString())); ?></td>
+                <td><?= $this->escapeHtml($this->translate($user->getAccessAsString())); ?></td>
+                <td><?= $this->escapeHtml($this->translate($user->getStatusAsString())); ?></td>
+                <td>
+                    <a class="btn btn-info"
+                       href="<?= $this->url('users', ['action' => 'edit', 'id' => $user->getId()]); ?>">
+                        <span class="glyphicon glyphicon-pencil" ></span> <?= $this->translate('Edit'); ?>
+                    </a>
+                    <a class="btn btn-default"
+                       href="<?= $this->url('users', ['action' => 'change-password', 'id' => $user->getId()]); ?>">
+                        <span class="glyphicon glyphicon-asterisk"></span> <?= $this->translate('Change Password'); ?>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</table>
+<?php if (! empty($users)) : ?>
+    <?= $this->paginationControl(
+        $users,
+        'Sliding',
+        'user/partial/paginator',
+        ['route' => 'users']
+    );
+    ?>
+<?php endif; ?>

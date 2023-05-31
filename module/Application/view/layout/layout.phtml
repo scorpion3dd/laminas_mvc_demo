@@ -1,0 +1,92 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Application\View\Helper\Breadcrumbs;
+use Application\View\Helper\Menu;
+
+?>
+<?= $this->doctype() ?>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <?= $this->headTitle($this->translate('Simple Web Demo Free Lottery Management Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?= $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+        <?= $this->headLink([
+            'rel' => 'shortcut icon',
+            'type' => 'image/vnd.microsoft.icon',
+            'href' => $this->basePath() . '/img/favicon.ico'
+        ])
+            ->prependStylesheet($this->basePath('css/style.css'))
+            ->prependStylesheet($this->basePath('css/bootstrap-theme.min.css'))
+            ->prependStylesheet($this->basePath('css/bootstrap.min.css')); ?>
+        <?= $this->headScript()
+            ->prependFile($this->basePath('js/bootstrap.min.js'))
+            ->prependFile($this->basePath('js/jquery-2.2.4.min.js'));
+        ?>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <!-- Page header -->
+                <div class="col-md-12">
+                    <div class="app-caption">
+                        <?= $this->translate('Simple Web Demo Free Lottery Management Application'); ?>
+                    </div>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Navigation bar -->
+                    <?php
+                    /** @var Menu $menu */
+                    $menu = $this->mainMenu();
+                    if (isset($activeMenuItemId)) {
+                        $menu->setActiveItemId($activeMenuItemId);
+                    }
+                    echo $menu->render();
+                    ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Breadcrumbs -->
+                    <?php
+                    /** @var Breadcrumbs $breadcrumbs */
+                    $breadcrumbs = $this->pageBreadcrumbs();
+                    ?>
+                    <?= $breadcrumbs->render(); ?>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- Page content placeholder -->
+                    <?= $this->content; ?>
+                </div>
+            </div>
+            <hr>
+            <footer>
+                <p>
+                    &copy; 2005 - <?= date('Y') ?>
+                    <?= $this->translate('by scorpion3dd.'); ?>
+                    <?= $this->translate('All rights reserved.'); ?>
+                </p>
+            </footer>
+        </div>
+        <?= $this->inlineScript() ?>
+    </body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Permissions - Simple Web Demo Free Lottery Management Application</title>        <meta name="viewport" content="width&#x3D;device-width,&#x20;initial-scale&#x3D;1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE&#x3D;edge">        <link href="&#x2F;css&#x2F;bootstrap.min.css" media="screen" rel="stylesheet" type="text&#x2F;css">
+    <link href="&#x2F;css&#x2F;bootstrap-theme.min.css" media="screen" rel="stylesheet" type="text&#x2F;css">
+    <link href="&#x2F;css&#x2F;style.css" media="screen" rel="stylesheet" type="text&#x2F;css">
+    <link href="&#x2F;img&#x2F;favicon.ico" rel="shortcut&#x20;icon" type="image&#x2F;vnd.microsoft.icon">        <scriptsrc="&#x2F;js&#x2F;jquery-2.2.4.min.js"></script>
+    <scriptsrc="&#x2F;js&#x2F;bootstrap.min.js"></script>    </head>
+<body>
+<div class="container">
+    <div class="row">
+        <!-- Page header -->
+        <div class="col-md-12">
+            <div class="app-caption">
+                Simple Web Demo Free Lottery Management Application                    </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Navigation bar -->
+            <nav class="navbar navbar-default" role="navigation"><div class="navbar-header"><button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></div><div class="collapse navbar-collapse navbar-ex1-collapse"><ul class="nav navbar-nav"><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="/users">Manage Users</a></li><li><a href="/permissions">Manage Permissions</a></li><li><a href="/roles">Manage Roles</a></li><li><a href="/consumer">Consumer</a></li><li><a href="/logs">Logs</a></li></ul></li></ul><ul class="nav navbar-nav navbar-right"><li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="/application/language/en_US">English (EN)</a></li><li><a href="/application/language/ru_RU">Russian (RU)</a></li><li><a href="/application/language/es_ES">Spanish (ES)</a></li></ul></li><li class="dropdown "><a href="#" class="dropdown-toggle" data-toggle="dropdown">admin@example.com <b class="caret"></b></a><ul class="dropdown-menu"><li><a href="/application/settings">Settings</a></li><li><a href="/logout">Sign out</a></li></ul></li></ul></div></nav>                </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Breadcrumbs -->
+            <ol class="breadcrumb"><li><a href="/">Home</a></li><li class="active">Manage Permissions</li></ol>                </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Page content placeholder -->
+            <h1>Manage Permissions</h1>
+            <p>
+                <a class="btn btn-default" href="
+    /permissions/add">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Permission    </a>
+            </p>
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Date Created</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>
+                        <a href="/permissions/view/7">
+                            permission.manage            </a>
+                    </td>
+                    <td>
+                        Manage permissions        </td>
+                    <td><nobr>2023-01-01 00:00:00</nobr></td>
+                    <td>
+                        <nobr>
+                            <a class="btn btn-info" href="/permissions/edit/7">
+                                <span class="glyphicon glyphicon-pencil" ></span> Edit            </a>
+                            <a class="btn btn-danger" href="/permissions/delete/7">
+                                <span class="glyphicon glyphicon-remove"></span> Delete            </a>
+                        </nobr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>
+                        <a href="/permissions/view/9">
+                            profile.any.view            </a>
+                    </td>
+                    <td>
+                        View anyone&#039;s profile        </td>
+                    <td><nobr>2023-01-01 00:00:00</nobr></td>
+                    <td>
+                        <nobr>
+                            <a class="btn btn-info" href="/permissions/edit/9">
+                                <span class="glyphicon glyphicon-pencil" ></span> Edit            </a>
+                            <a class="btn btn-danger" href="/permissions/delete/9">
+                                <span class="glyphicon glyphicon-remove"></span> Delete            </a>
+                        </nobr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>
+                        <a href="/permissions/view/10">
+                            profile.own.view            </a>
+                    </td>
+                    <td>
+                        View own profile        </td>
+                    <td><nobr>2023-01-01 00:00:00</nobr></td>
+                    <td>
+                        <nobr>
+                            <a class="btn btn-info" href="/permissions/edit/10">
+                                <span class="glyphicon glyphicon-pencil" ></span> Edit            </a>
+                            <a class="btn btn-danger" href="/permissions/delete/10">
+                                <span class="glyphicon glyphicon-remove"></span> Delete            </a>
+                        </nobr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>
+                        <a href="/permissions/view/8">
+                            role.manage            </a>
+                    </td>
+                    <td>
+                        Manage roles        </td>
+                    <td><nobr>2023-01-01 00:00:00</nobr></td>
+                    <td>
+                        <nobr>
+                            <a class="btn btn-info" href="/permissions/edit/8">
+                                <span class="glyphicon glyphicon-pencil" ></span> Edit            </a>
+                            <a class="btn btn-danger" href="/permissions/delete/8">
+                                <span class="glyphicon glyphicon-remove"></span> Delete            </a>
+                        </nobr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>
+                        <a href="/permissions/view/6">
+                            user.manage            </a>
+                    </td>
+                    <td>
+                        Manage users        </td>
+                    <td><nobr>2023-01-01 00:00:00</nobr></td>
+                    <td>
+                        <nobr>
+                            <a class="btn btn-info" href="/permissions/edit/6">
+                                <span class="glyphicon glyphicon-pencil" ></span> Edit            </a>
+                            <a class="btn btn-danger" href="/permissions/delete/6">
+                                <span class="glyphicon glyphicon-remove"></span> Delete            </a>
+                        </nobr>
+                    </td>
+                </tr>
+            </table>                </div>
+    </div>
+    <hr>
+    <footer>
+        <p>
+            &copy; 2005 - 2023                    by scorpion3dd.                    All rights reserved.                </p>
+    </footer>
+</div>
+</body>
+</html>

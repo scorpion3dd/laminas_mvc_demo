@@ -1,0 +1,23 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Laminas\View\Renderer\PhpRenderer;
+
+/** @var PhpRenderer $this */
+$this->headTitle($this->translate('Not Authorized'));
+?>
+<h1><?= $this->translate('Not Authorized'); ?></h1>
+<div class="alert alert-warning">
+    <?= $this->translate('Sorry, you have no permission to see this page.'); ?>
+</div>

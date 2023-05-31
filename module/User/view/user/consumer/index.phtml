@@ -1,0 +1,31 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Application\View\Helper\Breadcrumbs;
+use Application\View\Helper\Menu;
+use Laminas\View\Renderer\PhpRenderer;
+
+/** @var PhpRenderer $this */
+$this->headTitle($this->translate('Consumer'));
+/** @var Menu $menu */
+$menu = $this->mainMenu();
+$menu->setActiveItemId('consumer');
+/** @var Breadcrumbs $breadcrumbs */
+$breadcrumbs = $this->pageBreadcrumbs();
+$breadcrumbs->setItems([
+    $this->translate('Home') => $this->url('home'),
+    $this->translate('Consumer') => $this->url('consumer'),
+]);
+?>
+<h1><?= $this->translate('Consumer'); ?></h1>

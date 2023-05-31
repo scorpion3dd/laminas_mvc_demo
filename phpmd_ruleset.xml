@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!--
+  ~ This file is part of the Simple demo web-project with REST Full API for Mobile.
+  ~
+  ~ This project is no longer maintained.
+  ~ The project is written in Laminas Framework Release.
+  ~
+  ~ @link https://github.com/scorpion3dd
+  ~ @copyright Copyright (c) 2016-2021 Denis Puzik <scorpion3dd@gmail.com>
+  -->
+<ruleset name="Laminas Framework, PHPMD rule set"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
+                       http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="
+                       http://pmd.sf.net/ruleset_xml_schema.xsd">
+    <description>
+        Php 8.0, Laminas Framework
+    </description>
+
+    <rule ref="rulesets/unusedcode.xml"/>
+    <rule ref="rulesets/design.xml"/>
+    <rule ref="rulesets/cleancode.xml"/>
+    <rule ref="rulesets/controversial.xml"/>
+    <rule ref="rulesets/codesize.xml"/>
+    <rule ref="rulesets/naming.xml">
+        <exclude name="ShortVariable"/>
+    </rule>
+    <!--    <rule ref="rulesets/codesize.xml/CyclomaticComplexity">-->
+    <!--        <properties>-->
+    <!--            <property name="reportLevel" value="10"/>-->
+    <!--        </properties>-->
+    <!--    </rule>-->
+    <rule ref="rulesets/naming.xml/ShortVariable"
+          since="0.2"
+          message="Avoid variables with short names like {0}. Configured minimum length is {1}."
+          class="PHPMD\Rule\Naming\ShortVariable"
+          externalInfoUrl="http://phpmd.org/rules/naming.html#shortvariable">
+        <priority>3</priority>
+        <properties>
+            <property name="minimum" description="Minimum length for a variable, property or parameter name" value="3"/>
+            <property name="exceptions" value="id,tz" />
+        </properties>
+    </rule>
+</ruleset>

@@ -1,0 +1,48 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Laminas\View\Renderer\PhpRenderer;
+
+/** @var PhpRenderer $this */
+$this->headTitle($this->translate('Thank You'));
+/** @var string $id */
+?>
+<div class="row">
+    <div class="col-md-offset-4 col-md-5">
+        <h1><?= $this->translate('Reset Password'); ?></h1>
+        <?php if ($id == 'sent') : ?>
+            <p>
+                <?= $this->translate('Password reset instructions have been sent to your email address.'); ?>
+            </p>
+        <?php elseif ($id == 'invalid-email') : ?>
+            <p>
+                <?= $this->translate('There is no user with such an email or the user is inactive.'); ?>
+            </p>
+        <?php elseif ($id == 'set') : ?>
+            <p>
+                <?= $this->translate('Your new password has been set successfully.'); ?>
+            </p>
+            <p>
+                <?= $this->translate('Return to'); ?>
+                 <a href="<?= $this->url('login'); ?>"><?= $this->translate('login page'); ?></a>.
+            </p>
+            <p>
+        <?php elseif ($id == 'failed') : ?>
+            <?= $this->translate('Invalid reset key or it may have expired. Please return'); ?>
+            <a href="<?= $this->url('reset-password') ?>"><?= $this->translate('here'); ?></a>
+            <?= $this->translate('and try reset your password again.'); ?>
+            </p>
+        <?php endif; ?>
+    </div>
+</div>

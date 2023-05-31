@@ -1,0 +1,85 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+/**
+ * Local Configuration Override
+ *
+ * This configuration override file is for overriding environment-specific and
+ * security-sensitive configuration information. Copy this file without the
+ * .dist extension at the end and populate values as needed.
+ *
+ * @NOTE: This file is ignored from Git by default with the .gitignore included
+ * in ZendSkeletonApplication. This is a good practice, as it prevents sensitive
+ * credentials from accidentally being committed into version control.
+ */
+
+use Doctrine\DBAL\Driver\PDOMySql\Driver as PDOMySqlDriver;
+
+return [
+    'app' => [
+        'count_users' => 400,
+        'count_logs' => 10
+    ],
+    'doctrine' => [
+        'connection' => [
+            'orm_default' => [
+                'driverClass' => PDOMySqlDriver::class,
+                'params' => [
+                    'host'     => '127.0.0.1',
+                    'user'     => 'laminas_mvc_demo_integration',
+                    'password' => 'laminas_mvc_demo_integration123',
+                    'dbname'   => 'laminas_mvc_demo_integration',
+                ]
+            ],
+        ],
+        /**
+         * Caching doctrine may be in:
+         * - filesystem
+         * - redis
+         * - or can disable
+         */
+        'cache' => [
+            'redis' => [
+                'namespace' => 'Db_Doctrine',
+                'instance'  => 'User\Db\Cache\Redis',
+            ],
+        ],
+        'configuration' => [
+            'orm_default' => [
+                'query_cache'       => 'redis',
+                'result_cache'      => 'redis',
+                'metadata_cache'    => 'filesystem',
+                'hydration_cache'   => 'filesystem',
+            ],
+            'odm_default' => [
+                'metadata_cache'    => 'filesystem',
+            ],
+        ]
+    ],
+    'service_manager' => [
+        'factories' => [
+            'User\Db\Cache\Redis' => User\Db\Cache\RedisFactory::class,
+        ],
+    ],
+    'smtp' => [],
+    'redis' => [
+        'connection' => [
+            'default' => [
+                'params' => [
+                    'host'     => '127.0.0.1',
+                ]
+            ],
+        ],
+    ],
+];

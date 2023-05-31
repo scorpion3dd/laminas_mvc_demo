@@ -1,0 +1,86 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Doctrine\ODM\MongoDB\Configuration;
+use Doctrine\ODM\MongoDB\Repository\DocumentRepository as DefaultDocumentRepository;
+
+return [
+    'doctrine' => [
+
+        'connection' => [
+            'odm_default' => [
+                'server'           => 'localhost',
+                'port'             => '27017',
+                'connectionString' => null,
+                'user'             => null,
+                'password'         => null,
+                'dbname'           => 'laminas_mvc_demo',
+                'options'          => [],
+            ],
+        ],
+
+        'configuration' => [
+            'odm_default' => [
+                'metadata_cache'     => 'array',
+
+                'driver'             => 'odm_default',
+
+                'generate_proxies'   => Configuration::AUTOGENERATE_EVAL,
+                'proxy_dir'          => 'data/DoctrineMongoODMModule/Proxy',
+                'proxy_namespace'    => 'DoctrineMongoODMModule\Proxy',
+
+                'generate_hydrators' => Configuration::AUTOGENERATE_ALWAYS,
+                'hydrator_dir'       => 'data/DoctrineMongoODMModule/Hydrator',
+                'hydrator_namespace' => 'DoctrineMongoODMModule\Hydrator',
+
+                'generate_persistent_collections' => Configuration::AUTOGENERATE_ALWAYS,
+                'persistent_collection_dir' => 'data/DoctrineMongoODMModule/PersistentCollection',
+                'persistent_collection_namespace' => 'DoctrineMongoODMModule\PersistentCollection',
+                'persistent_collection_factory' => null,
+                'persistent_collection_generator' => null,
+
+                'default_db'         => null,
+
+                'filters'            => ['filterName' => 'BSON\Filter\Class'],
+
+                // custom types
+                'types'              => [],
+
+                'logger'             => 'DoctrineMongoODMModule\Logging\DebugStack',
+
+                'default_document_repository_class_name' => DefaultDocumentRepository::class,
+            ],
+        ],
+
+        'driver' => [
+            'odm_default' => [
+                'drivers' => [],
+            ],
+        ],
+
+        'documentmanager' => [
+            'odm_default' => [
+                'connection'    => 'odm_default',
+                'configuration' => 'odm_default',
+                'eventmanager' => 'odm_default',
+            ],
+        ],
+
+        'eventmanager' => [
+            'odm_default' => [
+                'subscribers' => [],
+            ],
+        ],
+    ],
+];

@@ -1,0 +1,76 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Application\View\Helper\Breadcrumbs;
+use Application\View\Helper\Menu;
+use Application\Document\Log;
+use Laminas\View\Renderer\PhpRenderer;
+
+/** @var PhpRenderer $this */
+$this->headTitle($this->translate('Logs'));
+/** @var Menu $menu */
+$menu = $this->mainMenu();
+$menu->setActiveItemId('logs');
+/** @var Breadcrumbs $breadcrumbs */
+$breadcrumbs = $this->pageBreadcrumbs();
+$breadcrumbs->setItems([
+    $this->translate('Home') => $this->url('home'),
+    $this->translate('Logs') => $this->url('logs'),
+]);
+?>
+<h1><?= $this->translate('Logs'); ?></h1>
+<?= $this->flashMessenger()->render('error', ['alert', 'alert-warning']); ?>
+<?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?>
+<?= $this->flashMessenger()->render('info', ['alert', 'alert-info']); ?>
+<a class="btn btn-default" href="
+    <?= $this->url('logs', ['action' => 'add']); ?>">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <?= $this->translate('New Log'); ?>
+</a>
+<table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th><?= $this->translate('Message'); ?></th>
+        <th><?= $this->translate('Priority'); ?></th>
+        <th><?= $this->translate('PriorityName'); ?></th>
+        <th><?= $this->translate('Timestamp'); ?></th>
+        <th><?= $this->translate('Actions'); ?></th>
+    </tr>
+    <?php /** @var array $logs */ ?>
+    <?php if (! empty($logs)) : ?>
+        <?php /** @var Log $log */ ?>
+        <?php foreach ($logs as $log) : ?>
+            <tr>
+                <td>
+                    <a href="<?= $this->url('logs', ['action' => 'view', 'id' => $log->getId()]); ?>">
+                        <?= $this->escapeHtml($log->getId()); ?>
+                    </a>
+                </td>
+                <td><?= $this->escapeHtml($log->getMessage()); ?></td>
+                <td><?= $this->escapeHtml((string)$log->getPriority()); ?></td>
+                <td><?= $this->escapeHtml($log->getPriorityName()); ?></td>
+                <td><?= $this->escapeHtml($log->getTimestampString()); ?></td>
+                <td>
+                    <a class="btn btn-info"
+                       href="<?= $this->url('logs', ['action' => 'edit', 'id' => $log->getId()]); ?>">
+                        <span class="glyphicon glyphicon-pencil" ></span> <?= $this->translate('Edit'); ?>
+                    </a>
+                    <a class="btn btn-danger"
+                       href="<?= $this->url('logs', ['action' => 'delete', 'id' => $log->getId()]); ?>">
+                        <span class="glyphicon glyphicon-remove" ></span> <?= $this->translate('Delete'); ?>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    <?php endif; ?>
+</table>

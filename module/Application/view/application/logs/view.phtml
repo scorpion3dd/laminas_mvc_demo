@@ -1,0 +1,72 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Application\Document\Log;
+use Application\View\Helper\Breadcrumbs;
+use Application\View\Helper\Menu;
+use Laminas\View\Renderer\PhpRenderer;
+
+/** @var PhpRenderer $this */
+$this->headTitle($this->translate('View Log'));
+/** @var Menu $menu */
+$menu = $this->mainMenu();
+$menu->setActiveItemId('logs');
+/** @var Log $log */
+/** @var Breadcrumbs $breadcrumbs */
+$breadcrumbs = $this->pageBreadcrumbs();
+$breadcrumbs->setItems([
+    $this->translate('Home') => $this->url('home'),
+    $this->translate('Logs') => $this->url('logs'),
+    $this->translate('View Log') => $this->url('logs', ['action' => 'view', 'id' => $log->getId()])
+]);
+?>
+<?= $this->flashMessenger()->render('error', ['alert', 'alert-warning']); ?>
+<?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?>
+<?= $this->flashMessenger()->render('info', ['alert', 'alert-info']); ?>
+<h1><?= $this->translate('View Log'); ?> <?= $this->escapeHtml($log->getId()) ?></h1>
+<p>
+    <a class="btn btn-default" href="<?= $this->url('logs', ['action' => 'edit', 'id' => $log->getId()]); ?>">
+        <span class="glyphicon glyphicon-pencil" ></span> <?= $this->translate('Edit'); ?>
+    </a>
+</p>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered">
+             <tr>
+                <th style="width: 20%">ID:</th>
+                <td style="width: 80%"><?= (string)$this->escapeHtml($log->getId()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Message'); ?>:</th>
+                <td><?= $this->escapeHtml($log->getMessage()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Priority'); ?>:</th>
+                <td><?= $this->escapeHtml((string)$log->getPriority()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('PriorityName'); ?>:</th>
+                <td><?= $this->escapeHtml($log->getPriorityName()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Timestamp'); ?>:</th>
+                <td><?= $this->escapeHtml($log->getTimestampString()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Extra'); ?>:</th>
+                <td><?= $this->escapeHtml($log->getExtraString()) ?></td>
+            </tr>
+        </table>
+    </div>
+</div>

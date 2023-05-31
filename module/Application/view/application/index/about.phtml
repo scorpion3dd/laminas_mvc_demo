@@ -1,0 +1,61 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Application\View\Helper\Breadcrumbs;
+use Application\View\Helper\Menu;
+use Laminas\View\Renderer\PhpRenderer;
+
+/** @var PhpRenderer $this */
+$this->headTitle('About');
+/** @var Menu $menu */
+$menu = $this->mainMenu();
+$menu->setActiveItemId('about');
+/** @var Breadcrumbs $breadcrumbs */
+$breadcrumbs = $this->pageBreadcrumbs();
+$breadcrumbs->setItems([
+    $this->translate('Home') => $this->url('home'),
+    $this->translate('About') => $this->url('about'),
+]);
+/** @var string $appName */
+?>
+<h1><?= $this->translate('About'); ?></h1>
+<h2><?= $this->translate('Application name:'); ?> <?= $this->escapeHtml($this->translate($appName)) ?></h2>
+<h3><?= $this->translate('Application description:'); ?></h3>
+<p>
+    <?= $this->translate('The Free Lottery application performs user management.'); ?>
+</p>
+<p>
+    <?= $this->translate('Users with the "Administrator" role in manual mode, after authentication in the application, through the admin menu can:'); ?>
+</p>
+<ul>
+    <li><?= $this->translate('create, edit, delete records with user data;'); ?></li>
+    <li><?= $this->translate('can change the status of users from active to inactive;'); ?></li>
+    <li><?= $this->translate('can give other users access to a very valuable resource.'); ?></li>
+</ul>
+<p>
+    <?= $this->translate('And also in automatic mode for random users, the application can perform a "Free Lottery", that is, change the status of users from active to inactive and can give other active users the opportunity to access a very valuable resource.'); ?>
+</p>
+<p>
+    <?= $this->translate('Another application "Free Lottery" manages roles and user access privileges. Users with the "Administrator" role in manual mode, after authentication in the application, through the admin menu can:'); ?>
+</p>
+<ul>
+    <li><?= $this->translate('create, edit, delete user roles;'); ?></li>
+    <li><?= $this->translate('create, edit, remove user access privileges;'); ?></li>
+    <li><?= $this->translate('make user roles hierarchical;'); ?></li>
+    <li><?= $this->translate('assign access privileges to user roles;'); ?></li>
+    <li><?= $this->translate('change user roles;'); ?></li>
+</ul>
+<p>
+    <?= $this->translate('The "Free Lottery" application on the main page, freely available, without user authentication, allows you to view a list of active users with open access to a very valuable resource at a given time.'); ?>
+</p>

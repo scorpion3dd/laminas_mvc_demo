@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!--
+  ~ This file is part of the Simple demo web-project with REST Full API for Mobile.
+  ~
+  ~ This project is no longer maintained.
+  ~ The project is written in Laminas Framework Release.
+  ~
+  ~ @link https://github.com/scorpion3dd
+  ~ @copyright Copyright (c) 2016-2021 Denis Puzik <scorpion3dd@gmail.com>
+  -->
+<psalm
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd">
+    <projectFiles>
+        <directory name="module" />
+        <directory name="config" />
+        <file name="public/index.php" />
+        <ignoreFiles>
+            <directory name="vendor" />
+            <directory name="data" />
+            <directory name="bin" />
+        </ignoreFiles>
+    </projectFiles>
+    <issueHandlers>
+    </issueHandlers>
+</psalm>

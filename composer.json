@@ -1,0 +1,245 @@
+{
+    "name": "laminas-demo/simple-application-free-lottery-laminas-mvc-skeleton",
+    "description": "Simple Web Demo Free Lottery Management Application by Laminas Framework MVC Skeleton Application",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "laminas",
+        "mvc",
+        "skeleton",
+        "framework"
+    ],
+    "homepage": "https://github.com/scorpion3dd/",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4 || ~8.0.0",
+        "ext-gd": "*",
+        "ext-mbstring": "*",
+        "ext-intl": "*",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "ext-mongo": "*",
+        "ext-mongodb": "*",
+        "ext-iconv": "*",
+        "ext-redis": "*",
+        "ext-xmlwriter": "*",
+        "laminas/laminas-component-installer": "3.2.0",
+        "laminas/laminas-development-mode": "3.10.0",
+        "laminas/laminas-skeleton-installer": "1.2.0",
+        "laminas/laminas-mvc": "3.6.0",
+        "laminas/laminas-mvc-form": "1.2.0",
+        "laminas/laminas-mvc-plugins": "1.2.0",
+        "laminas/laminas-session": "2.16.0",
+        "laminas/laminas-authentication": "2.13.0",
+        "laminas/laminas-math": "3.6.0",
+        "laminas/laminas-crypt": "3.10.0",
+        "laminas/laminas-captcha": "2.16.0",
+        "laminas/laminas-mail": "2.14.3",
+        "laminas/laminas-mime": "2.11.0",
+        "laminas/laminas-cache": "2.13.2",
+        "laminas/laminas-cache-storage-adapter-filesystem": "1.1.1",
+        "laminas/laminas-serializer": "2.14.0",
+        "laminas/laminas-permissions-rbac": "3.4.0",
+        "laminas/laminas-mvc-i18n": "1.7.0",
+        "laminas/laminas-http": "2.18.0",
+        "laminas/laminas-json": "3.5.0",
+        "laminas/laminas-stdlib": "3.16.1",
+        "laminas/laminas-log": "2.11.0",
+        "doctrine/orm": "2.14.1",
+        "doctrine/dbal": "2.13.9",
+        "doctrine/doctrine-orm-module": "3.0.9",
+        "doctrine/migrations": "2.3.5",
+        "doctrine/data-fixtures": "1.6.3",
+        "doctrine/mongodb-odm": "2.5.0",
+        "doctrine/doctrine-mongo-odm-module": "3.2.0",
+        "alcaeus/mongo-php-adapter": "1.2.2",
+        "beberlei/doctrineextensions": "1.3.0",
+        "symfony/yaml": "6.2.7",
+        "fzaninotto/faker": "1.9.2",
+        "nesbot/carbon": "2.66.0",
+        "firebase/php-jwt": "v6.4.0",
+        "zircote/swagger-php": "3.2.3",
+        "psr/container": "1.1.2",
+        "mongodb/mongodb": "1.15.0",
+        "phpmailer/phpmailer": "v6.8.0",
+        "graylog2/gelf-php": "2.0.0",
+        "nmred/kafka-php": "v0.2.0.8",
+        "monolog/monolog": "2.9.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Application\\": "module/Application/src/",
+            "User\\": "module/User/src/",
+            "Migrations\\": "data/Migrations/",
+            "Fixtures\\": "data/Fixtures/",
+            "FixturesIntegration\\": "data/FixturesIntegration/",
+            "Console\\": "console/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ApplicationTest\\": "module/Application/test/",
+            "UserTest\\": "module/User/test/"
+        }
+    },
+    "extra": [],
+    "scripts": {
+        "sonar-start": [
+            "Composer\\Config::disableProcessTimeout",
+            "StartSonar"
+        ],
+        "sonar-scanner": "sonar-scanner",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "static-analysis": "vendor/bin/psalm",
+        "phpmd": "vendor/bin/phpmd module/Application/src/ html phpmd_ruleset.xml --reportfile __tests__/phpmd.html --suffixes php,phtml --ansi",
+        "stan-check": "phpstan analyse --level=7 --memory-limit=1024M --xdebug --ansi",
+        "stan-check-coverage": "phpstan analyse --xdebug --level=7 --memory-limit=1024M --error-format=json > __tests__/phpstan.json",
+
+        "test-list-suites": "phpunit --list-suites",
+        "test-unit-coverage-clover": "phpunit --testsuite=Unit --coverage-clover __tests__/coverage/phpunit.clover.xml --log-junit __tests__/coverage/phpunit.results.xml",
+        "test-application": "phpunit --testsuite=Application ",
+        "test-application-unit": "phpunit --testsuite=Application-unit --colors=always",
+        "test-application-integration": "phpunit --testsuite=Application-integration --colors=always --no-coverage",
+        "test-user": "phpunit --testsuite=User --colors=always",
+        "test-user-unit": "phpunit --testsuite=User-unit --colors=always",
+        "test-user-integration": "phpunit --testsuite=User-integration --colors=always --no-coverage",
+        "test-unit": "phpunit --testsuite=Unit --colors=always",
+        "test-integration": "phpunit --testsuite=Integration --colors=always --no-coverage",
+        "test-all": [
+            "@test-integration",
+            "@test-unit"
+        ],
+        "test-all-coverage": "phpunit --testsuite=All --coverage-html __tests__/coverage",
+
+        "console-db-create": "php console/createDb.php --ansi",
+        "console-db-create-integration": "php console/createDbIntegration.php --ansi",
+        "console-db-update": "php console/updateDb.php --ansi",
+        "console-db-migrations-status": "php console/migrations.php migrations:status --ansi",
+        "console-db-migrations-migrate": "php console/migrations.php migrations:migrate --ansi",
+        "console-examples-write": "php console/examplesWrite.php --ansi",
+
+        "db-drop": "php bin/console.php app:db:drop --ansi",
+        "db-drop-integration": "php bin/console.php app:db:drop --env=integration --ansi",
+
+        "db-create": "vendor/bin/doctrine-module migrations:migrate --no-interaction --ansi",
+        "db-create-integration": "php bin/console.php app:db:migrations-migrate-integration --ansi",
+
+        "db-loading-fixtures": "php bin/console.php app:db:loading-fixtures --ansi",
+        "db-loading-fixtures-integration": "php bin/console.php app:db:loading-fixtures 35 --env=integration --ansi",
+
+        "project-init": [
+            "@db-create",
+            "@db-loading-fixtures"
+        ],
+        "project-init-integration": [
+            "@db-create-integration",
+            "@db-loading-fixtures-integration"
+        ],
+        "project-check-unit": [
+            "@cs-check",
+            "@stan-check",
+            "@test-unit"
+        ],
+        "project-check-integration": [
+            "@cs-check",
+            "@stan-check",
+            "@test-integration"
+        ],
+        "project-check-all": [
+            "@cs-check",
+            "@stan-check",
+            "@test-all"
+        ],
+        "project-check-sonar": [
+            "@cs-check",
+            "@stan-check-coverage",
+            "@test-integration",
+            "@test-unit-coverage-clover",
+            "@sonar-scanner"
+        ],
+        "project-refresh-unit": [
+            "@db-drop",
+            "@project-init",
+            "@project-check-unit"
+        ],
+        "project-refresh-integration": [
+            "@db-drop-integration",
+            "@project-init-integration",
+            "@project-check-integration"
+        ],
+        "project-refresh-all": [
+            "@db-drop",
+            "@project-init",
+            "@db-drop-integration",
+            "@project-init-integration",
+            "@project-check-all"
+        ],
+        "project-refresh-sonar": [
+            "@db-drop",
+            "@project-init",
+            "@db-drop-integration",
+            "@project-init-integration",
+            "@project-check-sonar"
+        ],
+        
+        "development-disable": "laminas-development-mode disable",
+        "development-enable": "laminas-development-mode enable",
+        "development-status": "laminas-development-mode status",
+        "post-create-project-cmd": [
+            "@development-enable",
+            "php bin/update-gitignore.php",
+            "php -r 'if (file_exists(\"bin/remove-package-artifacts.php\")) include \"bin/remove-package-artifacts.php\";'",
+            "php -r 'if (file_exists(\"CHANGELOG.md\")) unlink(\"CHANGELOG.md\");'"
+        ],
+        "serve": "php -S 0.0.0.0:8080 -t public",
+        "test": "vendor/bin/phpunit",
+
+        "doctrine-migrations-generate": "vendor/bin/doctrine-module migrations:generate --ansi",
+        "doctrine-migrations-migrate": "vendor/bin/doctrine-module migrations:migrate --no-interaction --ansi",
+        "doctrine-migrations-status": "vendor/bin/doctrine-module migrations:status --ansi",
+
+        "doctrine-version": "vendor/bin/doctrine-module --version --ansi",
+        "doctrine-help": "vendor/bin/doctrine --help --ansi",
+        "doctrine-orm-info": "vendor/bin/doctrine orm:info --ansi",
+        "doctrine-orm-mapping-describe-role": "vendor/bin/doctrine orm:mapping:describe User\\Entity\\Role --ansi",
+        "doctrine-clear-cache-query": "vendor/bin/doctrine orm:clear-cache:query --ansi",
+        "doctrine-clear-cache-metadata": "vendor/bin/doctrine orm:clear-cache:metadata --ansi",
+        "doctrine-clear-cache-result": "vendor/bin/doctrine orm:clear-cache:result --ansi",
+
+        "laminas-cli-version": "vendor/bin/laminas --version --ansi",
+        "laminas-cli-list": "vendor/bin/laminas list --ansi",
+        "laminas-cli-examples-write": "php bin/console.php app:examples-write --ansi"
+    },
+    "scripts-descriptions": {
+        "cs-check": "Run coding standards checks.",
+        "cs-fix": "Automatically fix coding standard issues.",
+        "development-disable": "Disable development mode.",
+        "development-enable": "Enable development mode.",
+        "development-status": "Detail whether or not the application is in development mode.",
+        "serve": "Start the built-in PHP web server and serve the application.",
+        "test": "Run unit tests."
+    },
+    "require-dev": {
+        "ext-curl": "*",
+        "phpmd/phpmd": "2.13.0",
+        "vimeo/psalm": "2.0.17",
+        "laminas/laminas-cli": "0.1.3",
+        "laminas/laminas-developer-tools": "2.8.0",
+        "laminas/laminas-test": "4.7.0",
+        "phpunit/php-invoker": "3.1.1",
+        "phpunit/php-code-coverage": "9.2.26",
+        "squizlabs/php_codesniffer": "3.7.2",
+        "phpstan/phpstan": "1.10.5",
+        "phpstan/phpstan-doctrine": "1.3.33",
+        "phpstan/phpstan-phpunit": "1.3.10"
+    },
+    "config": {
+        "allow-plugins": {
+            "laminas/laminas-component-installer": true,
+            "laminas/laminas-skeleton-installer": true,
+            "muglug/package-versions-56": true
+        }
+    }
+}

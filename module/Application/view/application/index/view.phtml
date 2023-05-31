@@ -1,0 +1,71 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Application\View\Helper\Breadcrumbs;
+use Application\View\Helper\Menu;
+use User\Entity\User;
+use Laminas\View\Renderer\PhpRenderer;
+
+/** @var PhpRenderer $this */
+$this->headTitle($this->translate('View User'));
+/** @var Menu $menu */
+$menu = $this->mainMenu();
+$menu->setActiveItemId('home');
+/** @var User $user */
+/** @var Breadcrumbs $breadcrumbs */
+$breadcrumbs = $this->pageBreadcrumbs();
+$breadcrumbs->setItems([
+    $this->translate('Home') => $this->url('home'),
+    $this->translate('View User') => $this->url('home', ['action' => 'view', 'id' => $user->getId()])
+]);
+?>
+<h1><?= $this->translate('View User'); ?> <?= $this->escapeHtml($user->getEmail()) ?></h1>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th style="width: 20%"><?= $this->translate('E-mail'); ?>:</th>
+                <td style="width: 80%"><?= $this->escapeHtml($user->getEmail()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Full Name'); ?>:</th>
+                <td><?= $this->escapeHtml($user->getFullName()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Description'); ?>:</th>
+                <td><?= $this->escapeHtml($user->getDescription()) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Date Birthday'); ?>:</th>
+                <td><?= $this->escapeHtml($user->getDateBirthday()->format('Y-m-d')) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Gender'); ?>:</th>
+                <td><?= $this->escapeHtml($this->translate($user->getGenderAsString())) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Access'); ?>:</th>
+                <td><?= $this->escapeHtml($this->translate($user->getAccessAsString())) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Status'); ?>:</th>
+                <td><?= $this->escapeHtml($this->translate($user->getStatusAsString())) ?></td>
+            </tr>
+            <tr>
+                <th><?= $this->translate('Roles'); ?>:</th>
+                <td><?= $this->escapeHtml($user->getRolesAsString()) ?></td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+# This is a build configuration for PHP.
+#
+# This file is part of the Simple Web Demo Free Lottery Management Application.
+#
+# This project is no longer maintained.
+# The project is written in Laminas Framework Release.
+#
+# @link https://github.com/scorpion3dd
+# @author Denis Puzik <scorpion3dd@gmail.com>
+# @copyright Copyright (c) 2021-2022 scorpion3dd
+
+includes:
+	- vendor/phpstan/phpstan-phpunit/extension.neon
+	- vendor/phpstan/phpstan-phpunit/rules.neon
+	- vendor/phpstan/phpstan-doctrine/extension.neon
+	- vendor/phpstan/phpstan-doctrine/rules.neon
+
+parameters:
+    inferPrivatePropertyTypeFromConstructor: true
+    reportUnmatchedIgnoredErrors: false
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+#    doctrine:
+#        repositoryClass: Tcam\Repositories\RAllViolation
+    paths:
+        - data/Fixtures/
+        - data/FixturesIntegration/
+        - data/language/
+        - console/
+        - module/Application/src/
+        - module/Application/view/
+        - module/User/src/
+        - module/User/view/
+    excludePaths:
+        - */test/data/*
+#        - */test/*
+    ignoreErrors:
+#        - '~^Parameter \#1 \$node \(.*\) of method .*Rule::processNode\(\) should be contravariant with parameter \$node \(PhpParser\\Node\) of method PHPStan\\Rules\\Rule::processNode\(\)$~'
+#        - '#Call to an undefined method Doctrine\\ORM\\EntityRepository<[a-zA-Z0-9\\_:]+>::[a-zA-Z0-9_]+\(\)#'
+#        - '#Method .+? should return [a-zA-Z0-9\\]+ but returns Doctrine\\Common\\Persistence\\ObjectRepository#'
+#        - '#Method .+? should return [a-zA-Z0-9\\]+ but returns Doctrine\\ORM\\EntityRepository<[a-zA-Z0-9\\_:]+>#'
+#        - '#Call to an undefined method Doctrine\\Persistence\\ObjectRepository::[a-zA-Z0-9_]+\(\)#'

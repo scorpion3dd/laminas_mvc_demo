@@ -1,0 +1,76 @@
+<?php
+/**
+ * This file is part of the Simple Web Demo Free Lottery Management Application.
+ *
+ * This project is no longer maintained.
+ * The project is written in Laminas Framework Release.
+ *
+ * @link https://github.com/scorpion3dd
+ * @author Denis Puzik <scorpion3dd@gmail.com>
+ * @copyright Copyright (c) 2021-2022 scorpion3dd
+ */
+
+declare(strict_types=1);
+
+use Application\View\Helper\Breadcrumbs;
+use Application\View\Helper\Menu;
+use User\Entity\Permission;
+use Laminas\View\Renderer\PhpRenderer;
+
+/** @var PhpRenderer $this */
+$this->headTitle($this->translate('Permissions'));
+/** @var Menu $menu */
+$menu = $this->mainMenu();
+$menu->setActiveItemId('permissions');
+/** @var Breadcrumbs $breadcrumbs */
+$breadcrumbs = $this->pageBreadcrumbs();
+$breadcrumbs->setItems([
+    $this->translate('Home') => $this->url('home'),
+    $this->translate('Manage Permissions') => $this->url('permissions'),
+]);
+/** @var array $permissions */
+?>
+<h1><?= $this->translate('Manage Permissions'); ?></h1>
+<?= $this->flashMessenger()->render('error', ['alert', 'alert-warning']); ?>
+<?= $this->flashMessenger()->render('success', ['alert', 'alert-success']); ?>
+<?= $this->flashMessenger()->render('info', ['alert', 'alert-info']); ?>
+<p>
+    <a class="btn btn-default" href="
+    <?= $this->url('permissions', ['action' => 'add']); ?>">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <?= $this->translate('New Permission'); ?>
+    </a>
+</p>
+<table class="table table-striped">
+   <tr>
+        <th>ID</th>
+        <th><?= $this->translate('Name'); ?></th>
+        <th><?= $this->translate('Description'); ?></th>
+        <th><?= $this->translate('Date Created'); ?></th>
+        <th><?= $this->translate('Actions'); ?></th>
+    </tr>
+    <?php /** @var Permission $permission */ ?>
+    <?php foreach ($permissions as $permission) : ?>
+    <tr>
+        <td><?= $this->escapeHtml($permission->getId()); ?></td>
+        <td>
+            <a href="<?= $this->url('permissions', ['action' => 'view', 'id' => $permission->getId()]); ?>">
+                <?= $this->escapeHtml($permission->getName()); ?>
+            </a> 
+        </td>
+        <td>
+            <?= $this->escapeHtml($permission->getDescription()); ?>
+        </td>
+        <td><nobr><?= $this->escapeHtml($permission->getDateCreated()->format('Y-m-d H:i:s')); ?></nobr></td>
+        <td>
+            <nobr>
+            <a class="btn btn-info" href="<?= $this->url('permissions', ['action' => 'edit', 'id' => $permission->getId()]); ?>">
+                <span class="glyphicon glyphicon-pencil" ></span> <?= $this->translate('Edit'); ?>
+            </a>
+            <a class="btn btn-danger" href="<?= $this->url('permissions', ['action' => 'delete', 'id' => $permission->getId()]); ?>">
+                <span class="glyphicon glyphicon-remove"></span> <?= $this->translate('Delete'); ?>
+            </a>
+            </nobr>
+        </td>    
+    </tr>
+    <?php endforeach; ?>
+</table>
