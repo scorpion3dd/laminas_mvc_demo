@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^7.4 || ~8.0.0",
+        "php": "^7.4 || ~8.0.0 || ~8.1",
         "ext-gd": "*",
         "ext-mbstring": "*",
         "ext-intl": "*",
@@ -122,7 +122,7 @@
         "db-loadingFixturesAppIntegration": "php bin/console.php app:db-loadingFixtures 35 --env=integration --ansi",
         "db-loadingFixturesIntegration": "php console/loadingFixturesIntegration.php --ansi",
         "project-init": [
-            "@db-create",
+            "@console-db-create",
             "@db-loadingFixtures",
             "@db-loadingFixturesApp"
         ],
