@@ -20,8 +20,6 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
-#    doctrine:
-#        repositoryClass: Tcam\Repositories\RAllViolation
     paths:
         - data/Fixtures/
         - data/FixturesIntegration/
