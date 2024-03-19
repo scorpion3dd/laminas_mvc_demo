@@ -192,7 +192,9 @@ abstract class AbstractFixtures
             $host = isset($params['redis']['connection']['default']['params']['host'])
                 ? $params['redis']['connection']['default']['params']['host'] : '';
             $this->redis = new Redis();
-            if (! $this->redis->connect($host)) {
+            try {
+                $this->redis->connect($host);
+            } catch (Exception $ex) {
                 throw new Exception('Redis connect exception');
             }
         }

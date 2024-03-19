@@ -46,19 +46,19 @@ return [
             'orm_default' => [
                 'driverClass' => PDOMySqlDriver::class,
                 'params' => [
-                    'host'     => '127.0.0.1',
-                    'user'     => 'laminas_mvc_demo',
-                    'password' => 'laminas_mvc_demo123',
-                    'dbname'   => 'laminas_mvc_demo',
+                    'host'     => getenv('MYSQL_HOST'),
+                    'user'     => getenv('MYSQL_USER'),
+                    'password' => getenv('MYSQL_PASSWORD'),
+                    'dbname'   => getenv('MYSQL_DATABASE'),
                 ]
             ],
             'odm_default' => [
-                'server'           => 'localhost',
-                'port'             => '27017',
+                'server'           => getenv('MONGO_HOST'),
+                'port'             => getenv('MONGO_PORT'),
                 'connectionString' => null,
-                'user'             => null,
-                'password'         => null,
-                'dbname'           => 'laminas_mvc_demo',
+                'user'             => getenv('MONGO_CONNECT_USER'),
+                'password'         => getenv('MONGO_CONNECT_PASSWORD'),
+                'dbname'           => getenv('MONGO_CONNECT_DB'),
                 'options'          => []
             ],
         ],
@@ -78,11 +78,11 @@ return [
             'orm_default' => [
                 'query_cache'       => 'redis',
                 'result_cache'      => 'redis',
-                'metadata_cache'    => 'filesystem',
-                'hydration_cache'   => 'filesystem',
+                'metadata_cache'    => 'array',
+                'hydration_cache'   => 'array',
             ],
             'odm_default' => [
-                'metadata_cache'    => 'filesystem',
+                'metadata_cache'    => 'redis',
             ],
         ]
     ],

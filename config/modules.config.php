@@ -6,6 +6,8 @@
  * This should be an array of module namespaces used in the application.
  */
 return [
+    'Laminas\Mvc\Middleware',
+    'Laminas\Di',
     'Laminas\Serializer',
     'Laminas\Mvc\Plugin\FilePrg',
     'Laminas\Mvc\Plugin\FlashMessenger',
@@ -30,6 +32,7 @@ return [
     'DoctrineORMModule',
     'Laminas\ZendFrameworkBridge',
     'Laminas\Cache\Storage\Adapter\Filesystem',
+    'Laminas\Diactoros',
     'Application',
     'User'
 ];

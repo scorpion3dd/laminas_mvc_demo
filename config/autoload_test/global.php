@@ -54,7 +54,7 @@ return [
             'adapter' => Filesystem::class,
             'options' => [
                 // Store cached data in this directory.
-                'cache_dir' => './data/cache_test',
+                'cache_dir' => __DIR__ . '/../../data/cache',
                 // Store cached data for 1 milliseconds require for tests
                 'ttl' => 1
             ],
@@ -81,9 +81,19 @@ return [
                 'dbwriter' => [
                     'name' => 'mongodb',  // change it to 'name' => 'noop' to disable mongodb logging
                     'options' => [
-                        'manager' => new Manager('mongodb://127.0.0.1:27017'),
+                        'manager' => new Manager('mongodb://'
+                            . getenv('MONGO_CONNECT_USER')
+                            . ':'
+                            . getenv('MONGO_CONNECT_PASSWORD')
+                            . '@'
+                            . getenv('MONGO_HOST')
+                            . ':'
+                            . getenv('MONGO_PORT')
+                            . '/'
+                            . getenv('MONGO_CONNECT_DB')
+                            . '?directConnection=true'),
                         'collection'   => 'logs',
-                        'database'     => 'laminas_mvc_demo_integration',
+                        'database'     => 'laminas_mvc_learn',
                         'formatter'    => 'db',
 
                     ],

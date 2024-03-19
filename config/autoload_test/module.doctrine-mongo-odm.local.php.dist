@@ -20,12 +20,12 @@ return [
 
         'connection' => [
             'odm_default' => [
-                'server'           => 'localhost',
-                'port'             => '27017',
+                'server'           => getenv('MONGO_HOST'),
+                'port'             => getenv('MONGO_PORT'),
                 'connectionString' => null,
-                'user'             => null,
-                'password'         => null,
-                'dbname'           => 'laminas_mvc_demo_integration',
+                'user'             => getenv('MONGO_CONNECT_USER'),
+                'password'         => getenv('MONGO_CONNECT_PASSWORD'),
+                'dbname'           => getenv('MONGO_CONNECT_DB'),
                 'options'          => [],
             ],
         ],
