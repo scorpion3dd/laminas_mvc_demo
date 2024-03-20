@@ -138,8 +138,8 @@ return [
                             . '/'
                             . getenv('MONGO_CONNECT_DB')
                             . '?directConnection=true'),
-                        'collection'   => 'logs',
-                        'database'     => 'laminas_mvc_learn',
+                        'collection'   => getenv('MONGO_CONNECT_COLLECTION'),
+                        'database'     => getenv('MONGO_CONNECT_DB'),
                         'formatter'    => 'db',
 
                     ],

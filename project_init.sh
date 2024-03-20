@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # This is a build configuration for PHP.
 #
 # This file is part of the Simple Web Demo Free Lottery Management Application.
