@@ -52,7 +52,7 @@ return [
             'adapter' => Filesystem::class,
             'options' => [
                 // Store cached data in this directory.
-                'cache_dir' => './data/cache',
+                'cache_dir' => __DIR__ . '/../../data/cache',
                 // Store cached data for 1 hour.
                 'ttl' => 60 * 60 * 1
             ],

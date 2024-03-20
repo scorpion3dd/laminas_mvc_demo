@@ -73,16 +73,26 @@ return [
                  'namespace' => 'Db_Doctrine',
                  'instance'  => 'User\Db\Cache\Redis',
              ],
+             'filesystem' => [
+                 'class' => 'Doctrine\Common\Cache\FilesystemCache',
+                 'directory' => 'data/DoctrineModule/cache',
+                 'namespace' => 'DoctrineModule',
+             ],
          ],
         'configuration' => [
             'orm_default' => [
                 'query_cache'       => 'redis',
+//                'query_cache'       => 'filesystem',
                 'result_cache'      => 'redis',
+//                'result_cache'      => 'filesystem',
                 'metadata_cache'    => 'array',
+//                'metadata_cache'    => 'filesystem',
                 'hydration_cache'   => 'array',
+//                'hydration_cache'   => 'filesystem',
             ],
             'odm_default' => [
                 'metadata_cache'    => 'redis',
+//                'metadata_cache'    => 'filesystem',
             ],
         ]
     ],
