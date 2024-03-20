@@ -1,0 +1,31 @@
+# This is a build configuration for PHP.
+#
+# This file is part of the Simple Web Demo Free Lottery Management Application.
+#
+# This project is no longer maintained.
+# The project is written in Laminas Framework Release.
+#
+# @link https://github.com/scorpion3dd
+# @author Denis Puzik <scorpion3dd@gmail.com>
+# @copyright Copyright (c) 2021-2022 scorpion3dd
+
+# RewriteEngine On
+
+# The following rule tells Apache that if the requested filename
+# exists, simply serve it.
+
+# RewriteCond %{REQUEST_FILENAME} -s [OR]
+# RewriteCond %{REQUEST_FILENAME} -l [OR]
+# RewriteCond %{REQUEST_FILENAME} -d
+# RewriteRule ^.*$ - [L]
+
+# The following rewrites all other queries to index.php. The
+# condition ensures that if you are using Apache aliases to do
+# mass virtual hosting or installed the project in a subdirectory,
+# the base path will be prepended to allow proper resolution of
+# the index.php file; it will work in non-aliased environments
+# as well, providing a safe, one-size fits all solution.
+
+# RewriteCond %{REQUEST_URI}::$1 ^(/.+)/(.*)::\2$
+# RewriteRule ^(.*) - [E=BASE:%1]
+# RewriteRule ^(.*)$ %{ENV:BASE}/index.php [L]

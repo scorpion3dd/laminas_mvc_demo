@@ -8,10 +8,8 @@
 # @link https://github.com/scorpion3dd
 # @author Denis Puzik <scorpion3dd@gmail.com>
 # @copyright Copyright (c) 2021-2022 scorpion3dd
-
 echo 'development-enable:'
 composer development-enable
-
 echo 'copy files:'
 cp ./config/autoload/laminas-developer-tools.local.php.dist ./config/autoload/laminas-developer-tools.local.php
 cp ./config/autoload/development.local.php.dist ./config/autoload/development.local.php
@@ -22,13 +20,11 @@ cp ./config/autoload_test/module.doctrine-mongo-odm.local.php.dist ./config/auto
 #cp ./config/autoload/laminas-developer-tools.local.php.dist ./config/autoload/laminas-developer-tools.local.php
 cp ./config/development.config.php.dist ./config/development.config.php
 cp ./public/.htaccess.dist ./public/.htaccess
-
 echo 'chown folders:'
 chown -R www-data:www-data ./data/cache
 chown -R www-data:www-data ./data/cache_test
 chown -R www-data:www-data ./data/logs
 chown -R www-data:www-data ./data/DoctrineModule/cache
-
 echo 'chmod folders:'
 chmod -R 777 ./data/cache
 chmod -R 777 ./data/cache_test
