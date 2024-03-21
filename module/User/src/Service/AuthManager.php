@@ -105,7 +105,11 @@ class AuthManager
         $result = $this->authService->authenticate();
         if ($result->getCode() == Result::SUCCESS && $rememberMe) {
             // Session cookie will expire in 1 month (30 days)
-            $this->sessionManager->rememberMe($this->config['gc_maxlifetime']);
+            $ttl = 60 * 60 * 24 * 30;
+            if (! empty($this->config['gc_maxlifetime'])) {
+                $ttl = $this->config['gc_maxlifetime'];
+            }
+            $this->sessionManager->rememberMe($ttl);
         }
 
         return $result;

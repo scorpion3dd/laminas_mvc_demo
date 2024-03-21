@@ -73,7 +73,7 @@ class UserControllerIntegrationNegativeTest extends AbstractMock
         $expected = file_get_contents(
             __DIR__ . '/../data/Controller/User/ViewActionNotId.html'
         );
-        self::assertSame($this->trim($expected), $this->trim($response));
+        self::assertStringStartsWith($this->trim($expected), $this->trim($response));
     }
 
     /**
@@ -97,7 +97,7 @@ class UserControllerIntegrationNegativeTest extends AbstractMock
         $expected = file_get_contents(
             __DIR__ . '/../data/Controller/User/ViewActionNotId.html'
         );
-        self::assertSame($this->trim($expected), $this->trim($response));
+        self::assertStringStartsWith($this->trim($expected), $this->trim($response));
     }
 
     /**

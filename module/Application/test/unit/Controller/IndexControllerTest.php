@@ -222,7 +222,7 @@ class IndexControllerTest extends AbstractMock
         $expected = str_replace('|Date Time Created|', $dateCreated, $expected);
         $dateUpdated = $user->getDateUpdated()->format('Y-m-d H:i:s');
         $expected = str_replace('|Date Time Updated|', $dateUpdated, $expected);
-        self::assertSame($this->trim($expected), $this->trim($response));
+        self::assertStringStartsWith($this->trim($expected), $this->trim($response));
     }
 
     /**

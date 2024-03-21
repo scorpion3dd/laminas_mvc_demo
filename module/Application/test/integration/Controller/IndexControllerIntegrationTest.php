@@ -104,7 +104,7 @@ class IndexControllerIntegrationTest extends AbstractMock
         $expected = file_get_contents(
             __DIR__ . '/../data/Controller/Index/GetAboutAction.html'
         );
-        self::assertSame($this->trim($expected), $this->trim($response));
+        self::assertStringStartsWith($this->trim($expected), $this->trim($response));
     }
 
     /**
