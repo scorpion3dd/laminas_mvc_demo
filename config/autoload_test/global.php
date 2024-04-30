@@ -98,22 +98,22 @@ return [
 
                     ],
                 ],
-                'filewriter' => [
-                    'name' => 'stream',
-                    'priority' => Logger::DEBUG,
-                    'options' => [
-                        'stream' => __DIR__ . '/../../data/logs/logfile_tests.log',
-                        'filters' => [
-                            'priority' => [
-                                'name' => 'priority',
-                                'options' => [
-                                    'operator' => '<=',
-                                    'priority' => Logger::DEBUG,
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
+//                'filewriter' => [
+//                    'name' => 'stream',
+//                    'priority' => Logger::DEBUG,
+//                    'options' => [
+//                        'stream' => __DIR__ . '/../../data/logs/logfile_tests.log',
+//                        'filters' => [
+//                            'priority' => [
+//                                'name' => 'priority',
+//                                'options' => [
+//                                    'operator' => '<=',
+//                                    'priority' => Logger::DEBUG,
+//                                ],
+//                            ],
+//                        ],
+//                    ],
+//                ],
             ],
         ],
     ],

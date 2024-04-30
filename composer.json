@@ -108,7 +108,9 @@
         "test-user-unit": "phpunit --testsuite=User-unit --colors=always",
         "test-user-integration": "phpunit --testsuite=User-integration --colors=always --no-coverage",
         "test-unit": "phpunit --testsuite=Unit --colors=always",
+        "jenkins-test-unit": "phpunit --testsuite=Unit --colors=never --no-coverage",
         "test-integration": "phpunit --testsuite=Integration --colors=always --no-coverage",
+        "jenkins-test-integration": "phpunit --testsuite=Integration --colors=never --no-coverage",
         "test-all": [
             "@test-integration",
             "@test-unit"
@@ -127,9 +129,11 @@
 
         "db-create": "vendor/bin/doctrine-module migrations:migrate --no-interaction --ansi",
         "db-create-integration": "php bin/console.php app:db:migrations-migrate-integration --ansi",
+        "jenkins-db-create-integration": "php bin/console.php app:db:migrations-migrate-integration",
 
         "db-loading-fixtures": "php bin/console.php app:db:loading-fixtures --ansi",
         "db-loading-fixtures-integration": "php bin/console.php app:db:loading-fixtures 35 --env=integration --ansi",
+        "jenkins-db-loading-fixtures-integration": "php bin/console.php app:db:loading-fixtures 35 --env=integration",
 
         "project-init": [
             "@console-db-create",
@@ -178,12 +182,9 @@
             "@project-init-integration",
             "@project-check-all"
         ],
-        "project-refresh-sonar": [
-            "@db-drop",
-            "@project-init",
-            "@db-drop-integration",
-            "@project-init-integration",
-            "@project-check-sonar"
+        "jenkins-project-create-test": [
+            "@jenkins-db-create-integration",
+            "@jenkins-db-loading-fixtures-integration"
         ],
         
         "development-disable": "laminas-development-mode disable",

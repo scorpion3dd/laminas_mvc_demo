@@ -144,21 +144,21 @@ return [
 
                     ],
                 ],
-                'filewriter' => [
-                    'name' => 'stream',
-                    'options' => [
-                        'stream' => __DIR__ . '/../../data/logs/logfile.log',
-                        'filters' => [
-                            'priority' => [
-                                'name' => 'priority',
-                                'options' => [
-                                    'operator' => '<=',
-                                    'priority' => Logger::DEBUG,
-                                ],
-                            ],
-                        ],
-                    ],
-                ],
+//                'filewriter' => [
+//                    'name' => 'stream',
+//                    'options' => [
+//                        'stream' => __DIR__ . '/../../data/logs/logfile.log',
+//                        'filters' => [
+//                            'priority' => [
+//                                'name' => 'priority',
+//                                'options' => [
+//                                    'operator' => '<=',
+//                                    'priority' => Logger::DEBUG,
+//                                ],
+//                            ],
+//                        ],
+//                    ],
+//                ],
             ],
         ],
     ],

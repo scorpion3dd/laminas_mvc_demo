@@ -39,3 +39,14 @@ public/img/captcha/*
 !.scannerwork/.gitkeep
 
 public/.htaccess
+
+/Jenkinsfile
+/JenkinsfileSimple
+/jenkins.mongod.conf.orig
+/jenkins.my.cnf
+/jenkins.php.ini
+/JenkinsEntrypoint.sh
+/JenkinsMongo.Dockerfile
+/JenkinsMysql.Dockerfile
+/JenkinsPhp.Dockerfile
+/JenkinsRedis.Dockerfile
